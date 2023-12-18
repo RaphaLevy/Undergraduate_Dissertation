@@ -1,0 +1,47 @@
+\chapter{Discussão}
+
+Ao longo do trabalho, foi desenvolvido e analisado um modelo de transmissão 
+SIR/SEI para a malária de forma a complementar a metodologia original de Parham \& Michael, 
+utilizando dos fatores epidemiológicos da transmissão da doença e complementando com 
+dinâmicas de demografia humana e fatores ambientais externos à temperatura e precipitação,
+como o desmatamento, considerado no fator multiplicativo das proporções de picadas
+causando infecção. 
+\\\\
+Dado o grande foco alocado na modelagem da transmissão analisando os impactos 
+ambientais, sendo necessárias diferentes adaptações do modelo buscando torná-lo o 
+mais realista e mais compatível com a dinâmica da doença no ambiente, a análise 
+aprofundada dos efeitos de fatores socioeconômicos, assim como a identificação 
+de estratégias de prevenção e controle da doença acabaram fugindo ao escopo do 
+TCC.
+\\\\
+Dentro do que foi feito, a principal consideração que se pôde tirar do 
+desenvolvimento do trabalho é que esse é um modelo muito sensível aos 
+parâmetros utilizados. Pequenas modificações são suficientes para que o modelo 
+atinja um equilíbrio ou tenha as populações tendendo a $\pm \infty$.
+\\\\
+De fato, o que pôde ser especialmente notado quando modificando os parâmetros 
+$A, \ B$ e $C$ foi que utilizando os valores indicados
+no trabalho de Parham $\&$ Michael \cite{Parham2010} e Eikenberry $\&$ Gummel \cite{OKUNEYE201772},
+no caso $A = -0.03, \ B = 1.31, \ C = -4.4$, não aconteceu epidemia.
+Iniciando a modelagem com os demais parâmetros utilizados 
+na Figura 7, com $k=1$, $\mathcal{R}_0 = 0.0207$, um valor muito abaixo do verificado previamente.
+Mesmo com $k=10$, $\mathcal{R}_0 = 0.207$, levando à população de mosquitos à extinção em todos os casos 
+e inviabilizando a existência de equilíbrio endêmico.
+\\\\
+Outro ponto que pôde ser percebido foi que em muitos casos, 
+a malária leva muito tempo para entrar em equilíbrio endêmico. Com isso,
+apesar de não ter sido possível estudar a aplicação de estratégias de controle da doença,
+pode-se chegar à conclusão que medidas de longo prazo podem não ser tão eficazes,
+visto que as condições ambientais presentes no início dessa análise
+já não seriam as mesmas quando a medida for aplicada.
+\\\\
+Como trabalho futuro, seria possível comparar a metodologia geral utilizada pelos autores 
+referenciados com a metodologia utilizada nesse trabalho, e verificar 
+o que poderia ser modificado para que, utilizando os parâmetros originais, o modelo
+ainda tivesse um equilíbrio endêmico.
+\\\\ 
+Ademais, conforme verificado no cálculo dos equilíbrios, algo mais que pode ser 
+estudado dando continuidade ao trabalho seria a análise de sua evolução conforme o tempo, visto que eles são dados 
+por funções osciladoras, como a taxa de picadas, taxa de nascimentos, de mortalidade, 
+a probabilidade de sobrevivência e a taxa de infecção de expostos, que variam dependendo
+dos fatores de temperatura e precipitação, conforme apresentado previamente.
