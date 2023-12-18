@@ -306,36 +306,45 @@ and other necessary functions, and then the variables used:
             \end{adjustwidth}
 
 \vspace{1cm}
-Parâmetros marcados com $^*$ foram adicionados durante o desenvolvimento da modelagem para correção de imprecisões derivadas das equações originais do artigo de referência. 
-A definição de $DD$ foi retirada de \cite{McCord2016} e \cite{10665-41724}.
+Parameters marked with $^*$ were added during the development of the modeling to correct 
+inaccuracies derived from the original equations in the reference article.
+The definition of $DD$ was taken from \cite{McCord2016} and \cite{10665-41724}.
 \\\\
-Tendo as equações e parâmetros, a modelagem foi feita inicialmente 
-utilizando dados da zona rural de Manaus, no período de 2004 a 2008, 
-que foram selecionados devido à maior incidência de casos de malária causados 
-por $P. \ vivax$, sendo a espécie responsável pelo maior número de
-casos no Brasil \cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}. Usando a função de incidência utilizada no projeto 
-Trajetorias \cite{Rorato2023}, temos:
+Having the equations and parameters, the modeling was initially done using data from the 
+rural area of Manaus, in the period from 2004 to 2008, which were selected due to the 
+higher incidence of malaria cases caused by $P. \ vivax$, 
+the species responsible for the highest number of cases in Brazil 
+\cite{OliveiraFerreira2010, 10.3389/fpubh.2021.647754}. Using the incidence 
+function used in the Trajetorias project \cite{Rorato2023}, we have:
 \begin{gather*}
-    \text{Inc}(d, m, z, t_1, t_2) = \dfrac{\text{Casos}(d, m, z, t_1, t_2)}{\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{anos}} \times 10^5,
+    \text{Inc}(d, m, z, t_1, t_2) = \dfrac{\text{Cases}(d, m, z, t_1, t_2)}{\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{years}} \times 10^5,
 \end{gather*}
-onde $\text{casos}(d, m, z, t_1, t_2)$ é o número de casos da doença $d$ na zona $z$ do município $m$, e $t_1$ e $t_2$ são os anos iniciais e finais do intervalo, enquanto que $\text{pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{anos}$ é a população na zona $z$ do município $m$ no meio do período multiplicado pelo total de anos de observação. Nesse caso, poderíamos indicar como:
+where $\text{Cases}(d, m, z, t_1, t_2)$ is the number of cases of disease $d$ in zone $z$ of municipality 
+$m$, and $t_1$ and $t_2$ are the initial and final years of the interval, while 
+$\text{Pop}(m,z,(t_1+t_2)/2) \times 5 \ \text{years}$ is the population in zone $z$ 
+of municipality $m$ in the middle of the period multiplied by the total number 
+of observation years. In this case, we could indicate as:
 \begin{gather*}
-    \footnotesize{\text{Inc}(\text{Vivax}, \text{Manaus}, \text{Rural}, 2004, 2008) = \dfrac{\text{Casos}(\text{Vivax}, \text{Manaus}, \text{Rural}, 2004, 2008)}{\text{Pop}(\text{Manaus}, \text{Rural}, 2006) \times 5 \ \text{anos}} \times 10^5}  \\\\
+    \footnotesize{\text{Inc}(\text{Vivax}, \text{Manaus}, \text{Rural}, 2004, 2008) = \dfrac{\text{Cases}(\text{Vivax}, \text{Manaus}, \text{Rural}, 2004, 2008)}{\text{Pop}(\text{Manaus}, \text{Rural}, 2006) \times 5 \ \text{years}} \times 10^5}  \\\\
     184030.8 = \dfrac{78745}{5\text{Pop}} \times 10^5 \Rightarrow Pop \approx 8558
 \end{gather*}
-Usando dados da população total de Manaus nesse período, cuja incidência foi de 3106.4 e o número de casos foi de 262264, a população total do município foi estimada como sendo de 1688540 habitantes. Com isso, a população rural pôde ser considerada como aproximadamente 0.5$\%$ da população do município.
+Using data on the total population of Manaus in this period, 
+with an incidence of 3106.4 and a number of cases of 262264, the 
+total population of the municipality was estimated to be 1688540 
+inhabitants. Thus, the rural population could be considered as 
+approximately 0.5$\%$ of the municipality's population.
 \\\\
-Tendo estimado o tamanho porcentual da população rural na cidade, 
-foi possível calcular essa população em cada um dos anos da análise 
-através de uma interpolação linear feita com dados de séries históricas 
-do IBGE \cite{popIBGE}:
+Having estimated the percentage size of the rural population 
+in the city, it was possible to calculate this population for 
+each of the years of the analysis through linear interpolation 
+using historical series data from IBGE \cite{popIBGE}:
 \\\\
 \begin{adjustwidth}{0cm}{}
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|c | c|} 
  \hline
- \textbf{Ano} & \textbf{População rural estimada}\\ 
+ \textbf{Year} & \textbf{Estimated rural population}\\ 
  \hline
 $2004$ & $7717$ \\
  \hline
@@ -350,32 +359,36 @@ $2004$ & $7717$ \\
  $2009$ & $8751$ \\
  \hline
 \end{tabular}
-\captionof{table}{População rural de Manaus de 2004 a 2009}
+\captionof{table}{Manaus' rural population from 2004 to 2009}
 \end{center}
 \end{adjustwidth}
 
 \vspace{1cm}
-Como haviam dados populacionais para os anos de 2000, 2007 e 2010, as interpolações foram feitas com diferentes pontos iniciais e finais, usando de 2000 a 2007 para 2004-2007, e de 2007 a 2010 para 2008-2009, de forma a utilizar corretamente a população de 2007.
+As there were population data for the years 2000, 2007, and 2010, 
+interpolations were performed with different initial and final 
+points, using data from 2000 to 2007 for 2004-2007 and from 2007 
+to 2010 for 2008-2009, ensuring the correct use of the 2007 population.
 \\\\
-Descrevendo agora um pouco da teoria por trás dos fatores ambientais, 
-segundo \cite{Norris2004}, 
-a remoção da copa das árvores permitiu a reemergência da malária 
-na América do Sul, já que em áreas desmatadas, 
-sem as copas cobrindo o solo, poças d'água sob luz solar atraem mosquitos 
-da espécie $Anopheles \ darlingi$, principal vetor relacionado à malária 
-humana na Amazônia \cite{infoAnopheles}, sendo que costumam ser menos encontrados em 
-florestas ainda intactas. Isso ocorre porque a luz e calor favorecem o 
-desenvolvimento de larvas e pupas, além de uma maior disponibilidade de 
-algas para alimentação das larvas \cite{article_alteracoesambientais}. O aumento da temperatura 
-ambiente também favorece a capacidade vetorial dos mosquitos. O desmatamento 
-também atrai e aproxima humanos para que possam tomar parte em atividades 
-madeireiras, de agricultura e construção de rodovias, trazendo indíviduos 
-infectados com o $Plasmodium$ para uma área em que tanto o vetor quanto o 
-ambiente já foram modificados de forma a favorecer a sua transmissão. 
-Ainda, a agricultura também favorece a sedimentação dos rios, sendo 
-ambientes propícios para o estabelecimento de criadouros. Sendo assim, 
-pode ser considerada uma mudança adequada para o modelo para levar 
-em consideração o desmatamento, o aumento das probabilidades de 
-sobrevivência dos ovos, larvas e pupas, além de aumentar a proporção 
-de picadas que produzem infecção, devido ao aumento da densidade 
-populacional humana em áreas próximas aos criadouros dos mosquitos.
+Now, describing a bit of the theory behind environmental factors, 
+according to \cite{Norris2004}, the removal of tree canopies allowed 
+the resurgence of malaria in South America. In deforested areas, 
+without tree canopies covering the ground, water puddles under sunlight 
+attract mosquitoes of the species $Anopheles \ darlingi$, the main vector 
+related to human malaria in the Amazon \cite{infoAnopheles}. They are 
+usually less commonly found in still intact forests. This is 
+because light and heat favor the development of larvae and 
+pupae, in addition to a greater availability of algae for 
+larval feeding \cite{article_alteracoesambientais}. The increase 
+in ambient temperature also favors the vectorial capacity of 
+mosquitoes. Deforestation also attracts and brings humans closer 
+to take part in logging, agriculture, and road construction 
+activities, bringing individuals infected with $Plasmodium$ to 
+an area where both the vector and the environment have already 
+been modified to favor transmission. Furthermore, agriculture 
+also promotes river sedimentation, providing suitable environments 
+for breeding sites. Therefore, it can be considered a relevant 
+change for the model to take into account deforestation, the 
+increase in survival probabilities of eggs, larvae, and pupae, 
+as well as increasing the proportion of bites that lead to infection, 
+due to the increased human population density in areas near mosquito 
+breeding sites.
