@@ -6,6 +6,7 @@ Supervising Professor: [Flávio Codeço Coelho](https://emap.fgv.br/professores/
 
 Contents:
 
++ modeling_files: Folder containg .ipynb files for elaboration of results
 + tex_files: Folder containing necessary .tex files for development of the dissertation
 + Dissertation.pdf: File containing the text of the dissertation
 
