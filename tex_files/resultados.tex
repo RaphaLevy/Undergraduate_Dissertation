@@ -111,7 +111,7 @@ The temperature and precipitation throughout the year
 then evolve as follows
 \footnote{The development of the model with the original data can be found at 
 https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
-\\modeling\_files/Original\_Parameters.ipynb.}:
+\\modeling\_files/Adapting\_T\_and\_R.ipynb.}:
 
 % \begin{figure}
 % \hspace*{-1.5cm} % Adiciona espaço negativo para puxar a imagem para a esquerda
@@ -141,17 +141,38 @@ https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
         \hbox{\hspace{6.5em} \includegraphics[scale=0.7] {THESIS-Grafico_da_Precipitacao.png}}
         \caption{Precipitation graph}
 \end{figure} 
-De forma a garantir a corretude da função com os parâmetros utilizados, calculei os valores da temperatura nos meses de outubro e maio, 
-que são o mais quente e frio do ano, com temperaturas médias de 27.6 $^\circ C$ e 25.8 $^\circ C$ respectivamente, e da precipitação em 
-março e agosto, que são os meses com maior e menor precipitação, com 395 e 114 mm, respectivamente. Os valores médios obtidos foram de 
-27.06 $^\circ C$, 25.86 $^\circ C$, 390.67 mm e 112.89 mm. Tendo os parâmetros de $T$ e $R$ prontos para uma primeira análise, a evolução 
-das populações de humanos e mosquitos foram verificadas utilizando $N=8558$, 
-com $S_{H0} = 7558$, $I_{H0} = 10000$, $M= 300000$, $S_{M0}=250000$, $E_{M0} = 50000$, $A = 317.925, \ B = 15, \ C = -48.78$ e $R_L = 312 \ \text{mm}$. 
-Os resultados podem ser encontrados no Apêndice 1 e 2 \footnote{A elaboração dos gráficos acima pode ser encontrada em
-\\
-https://github.com/RaphaLevy/TCC/blob/main/old/Testa\_Infectados\_Humanos.ipynb}. 
+In order to ensure the correctness of the function 
+with the parameters used, I calculated the temperature 
+values for the months of October and May, which are the 
+hottest and coldest months of the year with average 
+temperatures of 27.6 $^\circ C$ and 25.8 $^\circ C$, respectively. 
+Additionally, I calculated the precipitation values in March 
+and August, which are the months with the highest and lowest 
+precipitation, with 395 mm and 114 mm, respectively. 
+The obtained average values were 27.06 $^\circ C$, 25.86 $^\circ C$, 
+390.67 mm, and 112.89 mm. 
+\\\\With the temperature and precipitation parameters ready for an 
+initial analysis, the evolution of human and mosquito populations 
+was verified.  
+The results can be found in Appendices 1 and 2 
+\footnote{The development of the graphs above can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Adapting\_T\_and\_R.ipynb.}. 
 \\\\
-Notavelmente, a modelagem resultante não está correta, com ambas as populações se tornando negativas em certos pontos, especialmente a da população humana, cujo número de infectados decai para aproximadamente -300000. Verificando as EDOs, foi possível ver que o único parâmetro que é dado em função da temperatura e chuva no SIR é o $a(T)$, que é a taxa de picadas por dia. Dada a sua fórmula, e sabendo que a temperatura inicialmente decai nos primeiros meses do ano, tem-se que $a$ tomará valores negativos na equação de infectados, visto que $T_1$ será maior que $T$ inicialmente, explicando o comportamento da curva. Se comparado com os dados do artigo de Parham e Michael, cuja temperatura é crescente inicialmente, foi necessário modificar a ordem do numerador dessa taxa para que, num primeiro momento, não se torne negativa conforme a temperatura decai. Utilizando então a equação $a(T) = \dfrac{T_1-T}{D_1}$, os resultados podem ser vistos no apêndice 3 e 4.
+Notably, this result is still incorrect, as the mosquito population
+still becomes negative over time, and the human population also turns negative
+near the middle portion of the year. 
+However, the daily oscillations
+was indeed eliminated, due to the modifications made to $\omega_1$ and $\omega_2$.
+Another parameter that should also be adapated in consideration for our new climatic
+values was $R_L$, the rainfall limit beyond which breeding sites get flushed out and no 
+immature stages survive. In the original paper, $R_L$ was defined as 50 mm, which is
+too low for the high precipitation in the Amazon, which has a maximum of almost
+400 mm in March. Because of this, I increased $R_L$ from 50 mm to 450 mm.
+The results can be found in Appendices 3 and 4 
+\footnote{The development of the graphs above can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Adapting\_T\_and\_R.ipynb.}.
 \\\\
 Com essas modificações, a evolução da população humana parece mais viável do que estava anteriormente, com o número de infectados inicialmente baixo, 
 aumentando ao longo do ano e posteriormente decaindo. Por outro lado, é possível notar que próximo do tempo final de análise, o número de humanos 
