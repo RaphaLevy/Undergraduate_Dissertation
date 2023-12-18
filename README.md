@@ -4,4 +4,9 @@ Repository for storing articles and producing notebooks to be used in the elabor
 
 Supervising Professor: [Flávio Codeço Coelho](https://emap.fgv.br/professores/flavio-codeco-coelho-0)
 
+Contents:
+
++ tex_files: Folder containing necessary .tex files for development of the dissertation
++ Dissertation.pdf: File containing the text of the dissertation
+
 Original repository in Portuguese: [https://github.com/RaphaLevy/TCC/tree/main](https://github.com/RaphaLevy/TCC/tree/main)
