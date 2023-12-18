@@ -1,15 +1,18 @@
-\chapter{Resultados}
+\chapter{Results}
 
-Analisando primeiro os resultados obtidos com os parâmetros originais 
-do artigo de Parham e Michael ($T_1=23.2, \ T_2=0.07, \ \omega_1=0.67, 
-\ \phi_1=1.53, \ R_1=85.9, \ R_2=0.98, \ \omega_2=0.65, \ \phi_2=1.99, 
-\ A=-0.03, \ B=1.31, \ C=-4.4, \ b_1=0.04, \ b_2 = 0.09, \ T_{min}=14.5, 
-\ \gamma= 1/120,\ R_L = 50, \ c_1=0.00554, \ c_2=-0.06737$ \cite{Parham2010}, \cite{OKUNEYE201772}), 
-e utilizando a população média estimada anteriormente e um valor arbitrário 
-para a população de mosquitos, de 10000, assumindo 1000 humanos infectados 
-e 5000 mosquitos expostos à malária em $t=0$, a modelagem ficou como a seguir 
-\footnote{A elaboração do modelo com os dados originais pode ser encontrada em
-https://github.com/RaphaLevy/TCC/blob/main/old/Dados\%20Originais.ipynb.}: 
+
+Analyzing the results obtained with the original parameters from 
+the article by Parham and Michael 
+($T_1=23.2, \ T_2=0.07, \ \omega_1=0.67, \ \phi_1=1.53, \ R_1=85.9, \ R_2=0.98, 
+\ \omega_2=0.65, \ \phi_2=1.99, \ A=-0.03, \ B=1.31, \ C=-4.4, \ b_1=0.04, \ 
+b_2 = 0.09, \ T_{min}=14.5, \ \gamma= 1/120, \ R_L = 50, \ c_1=0.00554, \ 
+c_2=-0.06737$ \cite{Parham2010}, \cite{OKUNEYE201772}), and using 
+the previously estimated average population and an arbitrary value 
+for the mosquito population, of 10000, assuming 1000 infected humans and 
+5000 exposed mosquitoes at $t=0$, the modeling is as follows
+\footnote{The development of the model with the original data can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Original\_Parameters.ipynb.}: 
 
 % Pra plotar duas imagens uma ao lado da outra, precisa corrigir a posição das legendas.
 
@@ -36,25 +39,49 @@ https://github.com/RaphaLevy/TCC/blob/main/old/Dados\%20Originais.ipynb.}:
 
 \begin{figure}[!ht]
         \centering
-        \hbox{\hspace{4em} \includegraphics[scale=0.5] {SIR_Dados_Originais_Parham_Michael.png}}
-        \caption{SIR com dados originais}
+        \hbox{\hspace{5em} \includegraphics[scale=0.5] {THESIS-SIR_Dados_Originais_Parham_Michael.png}}
+        \caption{SIR with original parameters}
 \end{figure} 
 \begin{figure}[!ht]
         \centering
-        \hbox{\hspace{3em} \includegraphics[scale=0.5] {SEI_Dados_Originais_Parham_Michael.png}}
-        \caption{SEI com dados originais}
+        \hbox{\hspace{4.5em} \includegraphics[scale=0.5] {THESIS-SEI_Dados_Originais_Parham_Michael.png}}
+        \caption{SEI with original parameters}
 \end{figure} 
 \newpage
-Com essa modelagem inicial, é perceptível uma forte oscilação do número de humanos e mosquitos suscetíveis, assim como de humanos infectados. Ademais, é notável que, com esses parâmetros, a epidemia não irá se estabilizar, visto que o número de humanos infectados tende a 0 ao longo do ano, enquanto que a população de mosquitos suscetíveis fica negativa e a população de expostos e infectados também tende a 0. Esses efeitos foram caracterizados pela temperatura e precipitação oscilando em períodos de tempo muito curtos, devido a um alto valor de $\omega$ para ambas as funções. 
+With this initial modeling, 
+a strong oscillation in the number 
+of susceptible humans and mosquitoes, 
+as well as infected humans, is noticeable. 
+Furthermore, it is evident that with these 
+parameters, the epidemic will not stabilize, 
+as the number of infected humans tends to 0 
+throughout the year, while the population of 
+susceptible mosquitoes becomes negative, and the 
+population of exposed and infected individuals also tends to 0. 
+These effects were characterized by temperature and 
+precipitation oscillating in very short periods of 
+time, attributed to a high value of $\omega$ for both functions.
 \\\\
-Coletando dados climatológicos de Manaus em \cite{ClimaMANAUS}, a temperatura e precipitação média foram estimados como 26.4 $^\circ C$ e 250.083 mm, respectivamente. Com esses dados, a amplitude da variabilidade sazonal, frequência angular e ``phase lag" da variabilidade para ambos foram definidos de forma a aproximar os valores reais:
+Starting with only a single infected human and exposed mosquito, the 
+oscilatting population isn't noticeable in the SIR plot, however the mosquito population 
+still becomes negative.
+\\\\
+Now, the first necessary modification is to correct the temperature 
+and precipitation to consider data from Manaus, as the original 
+paper uses data from Tanzania. So, 
+collecting climatological data from Manaus from \cite{ClimaMANAUS}, 
+the average temperature and precipitation were estimated 
+as 26.4 $^\circ C$ and 250.083 mm, respectively. 
+With this data, the amplitude of seasonal variability, 
+angular frequency, and phase lag of variability for 
+both were defined to approximate the real values:
 \\\\
 \begin{adjustwidth}{-0.5cm}{}
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|c | c|} 
  \hline
- \textbf{Parâmetro} & \textbf{Valor}\\ 
+ \textbf{Parameter} & \textbf{Value}\\ 
  \hline
   $T_1$ & \makecell[l]{\rule{0pt}{3ex}26.4$^\circ C$\rule[-1.5ex]{0pt}{0pt}} \\
  \hline
@@ -73,17 +100,18 @@ Coletando dados climatológicos de Manaus em \cite{ClimaMANAUS}, a temperatura e
  $\phi_2$ & \makecell[l]{\rule{0pt}{3ex}1.6\rule[-1.5ex]{0pt}{0pt}} \\
  \hline
 \end{tabular}
-\captionof{table}{Valores dos parâmetros de clima}
+\captionof{table}{Values for climatic parameters}
 \end{center}
 \end{adjustwidth}
 
 \vspace{1cm}
-Os parâmetros de amplitude ($T_2$ e $R_2$) e defasagem de fase 
-($\phi_1$ e $\phi_2$) são adimensionais. A temperatura e precipitação ao 
-longo do ano evoluem então da seguinte maneira\footnote{A elaboração dos gráficos pode ser encontrada em
-\\
-https://github.com/RaphaLevy/TCC/blob/main/Discuss\%C3\%A3o/Correcao\_de\_Modelagens.ipynb}:
-
+The amplitude parameters ($T_2$ and $R_2$) and phase lag 
+parameters ($\phi_1$ and $\phi_2$) are dimensionless. 
+The temperature and precipitation throughout the year 
+then evolve as follows
+\footnote{The development of the model with the original data can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Original\_Parameters.ipynb.}:
 
 % \begin{figure}
 % \hspace*{-1.5cm} % Adiciona espaço negativo para puxar a imagem para a esquerda
@@ -105,14 +133,13 @@ https://github.com/RaphaLevy/TCC/blob/main/Discuss\%C3\%A3o/Correcao\_de\_Modela
 
 \begin{figure}[!ht]
         \centering
-        \hbox{\hspace{7.2em} \includegraphics[scale=0.6] {Grafico_da_Temperatura.png}}
-        \caption{Gráfico da temperatura}
+        \hbox{\hspace{6.0em} \includegraphics[scale=0.7] {THESIS-Grafico_da_Temperatura.png}}
+        \caption{Temperature graph}
 \end{figure} 
-\newpage
 \begin{figure}[!ht]
         \centering
-        \hbox{\hspace{7.5em} \includegraphics[scale=0.6] {Grafico_da_Precipitacao.png}}
-        \caption{Gráfico da precipitação}
+        \hbox{\hspace{6.5em} \includegraphics[scale=0.7] {THESIS-Grafico_da_Precipitacao.png}}
+        \caption{Precipitation graph}
 \end{figure} 
 De forma a garantir a corretude da função com os parâmetros utilizados, calculei os valores da temperatura nos meses de outubro e maio, 
 que são o mais quente e frio do ano, com temperaturas médias de 27.6 $^\circ C$ e 25.8 $^\circ C$ respectivamente, e da precipitação em 
