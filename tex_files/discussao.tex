@@ -1,47 +1,57 @@
-\chapter{Discussão}
+\chapter{Discussion}
 
-Ao longo do trabalho, foi desenvolvido e analisado um modelo de transmissão 
-SIR/SEI para a malária de forma a complementar a metodologia original de Parham \& Michael, 
-utilizando dos fatores epidemiológicos da transmissão da doença e complementando com 
-dinâmicas de demografia humana e fatores ambientais externos à temperatura e precipitação,
-como o desmatamento, considerado no fator multiplicativo das proporções de picadas
-causando infecção. 
+Throughout the work, a SIR/SEI transmission model for malaria was 
+developed and analyzed to complement the original methodology by 
+Parham \& Michael. The model incorporated epidemiological factors of 
+disease transmission and complemented them with human demographic dynamics 
+and external environmental factors such as temperature and precipitation, 
+including deforestation, considered in the multiplicative factor for the 
+infection-causing bite proportions.
 \\\\
-Dado o grande foco alocado na modelagem da transmissão analisando os impactos 
-ambientais, sendo necessárias diferentes adaptações do modelo buscando torná-lo o 
-mais realista e mais compatível com a dinâmica da doença no ambiente, a análise 
-aprofundada dos efeitos de fatores socioeconômicos, assim como a identificação 
-de estratégias de prevenção e controle da doença acabaram fugindo ao escopo do 
-TCC.
+Given the significant focus on modeling transmission and analyzing the 
+environmental impacts, requiring various adaptations to make it more realistic 
+and compatible with disease dynamics in the environment, the in-depth analysis 
+of the effects of socioeconomic factors, as well as the identification of 
+disease prevention and control strategies, ended up beyond the scope of the 
+undergraduate thesis.
 \\\\
-Dentro do que foi feito, a principal consideração que se pôde tirar do 
-desenvolvimento do trabalho é que esse é um modelo muito sensível aos 
-parâmetros utilizados. Pequenas modificações são suficientes para que o modelo 
-atinja um equilíbrio ou tenha as populações tendendo a $\pm \infty$.
+Regarding what was accomplished, a key takeaway from the work is that 
+this model is highly sensitive to the parameters used. Small modifications 
+are sufficient for the model to reach equilibrium or for populations to tend 
+toward $\pm \infty$.
 \\\\
-De fato, o que pôde ser especialmente notado quando modificando os parâmetros 
-$A, \ B$ e $C$ foi que utilizando os valores indicados
-no trabalho de Parham $\&$ Michael \cite{Parham2010} e Eikenberry $\&$ Gummel \cite{OKUNEYE201772},
-no caso $A = -0.03, \ B = 1.31, \ C = -4.4$, não aconteceu epidemia.
-Iniciando a modelagem com os demais parâmetros utilizados 
-na Figura 7, com $k=1$, $\mathcal{R}_0 = 0.0207$, um valor muito abaixo do verificado previamente.
-Mesmo com $k=10$, $\mathcal{R}_0 = 0.207$, levando à população de mosquitos à extinção em todos os casos 
-e inviabilizando a existência de equilíbrio endêmico.
+Indeed, what was particularly noted when modifying parameters 
+$A, \ B,$ and $C$ was that using the values indicated in the 
+works of Parham \& Michael \cite{Parham2010} and Eikenberry \& 
+Gummel \cite{OKUNEYE201772}, in the case 
+$A = -0.03, \ B = 1.31, \ C = -4.4$, no epidemic occurred. 
+Starting the modeling with the other parameters used in 
+Figure 7, with $k=1$, $\mathcal{R}_0 = 0.0207$, a value 
+much lower than previously verified. Even with $k=10$, $\mathcal{R}_0 = 0.207$, 
+leading to mosquito population extinction in all cases and making the 
+existence of endemic equilibrium unviable.
 \\\\
-Outro ponto que pôde ser percebido foi que em muitos casos, 
-a malária leva muito tempo para entrar em equilíbrio endêmico. Com isso,
-apesar de não ter sido possível estudar a aplicação de estratégias de controle da doença,
-pode-se chegar à conclusão que medidas de longo prazo podem não ser tão eficazes,
-visto que as condições ambientais presentes no início dessa análise
-já não seriam as mesmas quando a medida for aplicada.
+Another point that could be perceived was that in many cases, 
+malaria takes a long time to reach endemic equilibrium. Therefore, 
+although it was not possible to study the application of disease 
+control strategies, it can be concluded that long-term measures 
+may not be as effective, as the environmental conditions present 
+at the beginning of this analysis would no longer be the same when 
+the measure is applied.
 \\\\
-Como trabalho futuro, seria possível comparar a metodologia geral utilizada pelos autores 
-referenciados com a metodologia utilizada nesse trabalho, e verificar 
-o que poderia ser modificado para que, utilizando os parâmetros originais, o modelo
-ainda tivesse um equilíbrio endêmico.
-\\\\ 
-Ademais, conforme verificado no cálculo dos equilíbrios, algo mais que pode ser 
-estudado dando continuidade ao trabalho seria a análise de sua evolução conforme o tempo, visto que eles são dados 
-por funções osciladoras, como a taxa de picadas, taxa de nascimentos, de mortalidade, 
-a probabilidade de sobrevivência e a taxa de infecção de expostos, que variam dependendo
-dos fatores de temperatura e precipitação, conforme apresentado previamente.
+As future work, it would be possible to compare the general 
+methodology used by the referenced authors with the methodology 
+used in this work and identify what could be modified so that, 
+using the original parameters, the model still reaches endemic equilibrium.
+\\\\
+Furthermore, as verified in the equilibrium calculations, 
+something else that could be studied as a continuation of 
+the work is the analysis of its evolution over time since 
+they are given by oscillatory functions, such as the biting 
+rate, birth rate, mortality rate, survival probability, and 
+the infection rate of exposed individuals, which vary 
+depending on temperature and precipitation factors, as presented previously. 
+\\\\
+Another possible option would be to analyze the use of $k$ in relation to other 
+parameters instead of only the infection rate,
+such as the mosquito's birth and mortality rates, daily survival rates, among others.
