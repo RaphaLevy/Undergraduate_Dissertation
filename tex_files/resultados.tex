@@ -174,17 +174,51 @@ The results can be found in Appendices 3 and 4
 https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
 \\modeling\_files/Adapting\_T\_and\_R.ipynb.}.
 \\\\
-Com essas modificações, a evolução da população humana parece mais viável do que estava anteriormente, com o número de infectados inicialmente baixo, 
-aumentando ao longo do ano e posteriormente decaindo. Por outro lado, é possível notar que próximo do tempo final de análise, o número de humanos 
-infectados se torna negativo. A modelagem de mosquitos, por sua vez, se manteve relativamente estável.
+Now, while the mosquito population in non-negative, it rapidly declines and
+becomes extinct. That is due to the value of $\mu$, the mortality rate of mosquitoes,
+given by $-\log(e^{(-1 / (AT^2 + BT + C))})$. For small values of 
+$A$, $B$ and $C$, mostly $A$, $\mu$ becomes ``relatively'' large, and the mosquito
+population goes extinct. To fix this, I altered these 3 parameters from the initial values 
+of the arcticle, which had $\mu \approx 0.0027$, to $A=356.3, \ B=15$
+and $C=-48.78$, which gave a $\mu$ of approximately $4.02133 \times 10^{-6}$, 
+and so the mosquto population is nearly constant throughout the analysis.
+The results, with $A=356.3, \ B=15$
+and $C=-48.78$, can be found in Appendices 5 and 6 
+\footnote{The development of the graphs above can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Modifying\_Constant\_Parameters.ipynb.}.
 \\\\
-Analisando o comportamento da modelagem de mosquitos de forma que a população ficasse aproximadamente constante ao longo do período, dadas as equações diferenciais do modelo SEI, e os parâmetros passados para atingir esse objetivo, o valor de $\mu$ passado fica muito próximo de 0, enquanto que $l(\tau_M)$, uma probabilidade, fica muito próxima de 1. Por isso, $\dfrac{dE_M}{dt}$ também fica bem próximo de 0, fazendo com que a função de expostos seja linear, aproximadamente constante no número inicial de infectados, enquanto que a população de mosquitos que sai do compartimento de suscetíveis quase que simultaneamente entra no compartimento de infectados, causando as ondulações espelhadas de $S$ e $I$. Para contornar esse efeito, foi necessário modificar o uso de $b_1$, para passar apenas mosquitos do compartimento $S$ para $E$, necessitando da inclusão de um novo parâmetro, $b_3$, para passar mosquitos do compartimento $E$ para $I$. Essa taxa é inversa ao período de incubação, então definimos
+Now, it is possible to see that the mosquito population in fact remains nearly constant,
+as there is close to no transference between compartments. In addition to that, 
+the human population again turned out problematic, with the number of infected and 
+recovered humans becoming negative over time.  
+\\\\
+To verify what else could be done to allow the 
+transference of individuals between compartments,
+given the differential equations of the SEI model and the 
+parameters provided to achieve this goal, the value of $\mu$ becomes 
+very close to 0, as seen above, while $l(\tau_M)$, a probability, becomes very 
+close to 1. Therefore, $\dfrac{dE_M}{dt}$ also becomes very close to 0, 
+causing the exposed function to be linear, while the mosquito population 
+leaving the susceptible compartment almost simultaneously enters 
+the infected compartment, causing mirrored oscillations of $S$ and $I$. 
+To overcome this effect, it was necessary to modify the use of $b_1$ to 
+only move mosquitoes from compartment $S$ to $E$, requiring the inclusion 
+of a new parameter, $b_3$, to move mosquitoes from compartment $E$ to $I$. 
+This rate is inversely related to the incubation period, so we define
 \begin{gather*}
-    b_3 = \dfrac{T-T_{min}}{DD}
+b_3 = \dfrac{T-T_{min}}{DD}
 \end{gather*}
-Ademais, foi removido o parâmetro $a(T)$ na passagem de mosquitos expostos para infectados, visto que nessa mudança do compartimento $E$ para $I$ não ocorrem novas picadas, assim como o parâmetro $T_1$ utilizado na fórmula de $a(T)$ também teve de ser modificado, visto que o artigo original aplica $T_1$ com dois valores diferentes, para a taxa de picadas e para a equação da temperatura por tempo. Com o intuito de manter a formatação de $T(t)$ e $R(t)$ a mesma, $T_1$ de $a$ foi modificado para $T'$.
+Moreover, the parameter $a(T)$ in the transition from 
+exposed mosquitoes to infected was removed, as no new bites occur 
+in this change from compartment $E$ to $I$. Additionally, 
+the parameter $T_1$ used in the formula for $a(T)$ had to 
+be modified since the original article applies $T_1$ with 
+two different values for the biting rate and for the temperature 
+equation over time. To maintain the formatting of $T(t)$ and 
+$R(t)$, $T_1$ from $a$ was modified to $T'$.
 \\\\
-Considerando então o que foi dito acima, também se tornou necessário modificar as equações diferenciais do SEI, que ficaram dessa forma:
+With these modifications, the differential equations of the SEI model were modified:
 \begin{gather*}
 \begin{cases}
 \dfrac{dS_M}{dt} = b - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M\\
@@ -194,6 +228,11 @@ Considerando então o que foi dito acima, também se tornou necessário modifica
 \dfrac{dI_M}{dt} = b_3E_Ml -\mu I_M\\
 \end{cases}
 \end{gather*}
+\\\\
+The results can be seen in Apendices 7 to 10.
+\footnote{The development of the graphs above can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/SEI\_Exposed\_to\_Infected.ipynb.}.
 \\\\
 Com as adaptações feitas à transmissão da doença entre os mosquitos 
 (Apêndices 5 e 6), é possível ver que não só o 
