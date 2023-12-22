@@ -452,6 +452,17 @@ $\mathcal{R}_0$ for the SIR model has dimensions of (1/day)/(1/day),
 $\mathcal{R}_0$ for the SEI model has dimensions of (1/day$^2$)/(1/day$^2$), 
 and the coupled model has dimensions of (1/day$^3$)/(1/day$^3$).
 \\\\
+Before continuing with the modeling, it was decided to analyze the evolution
+of the rates as a function of temperature and precipitation, instead of time,
+to see their behavior as $T$ and $R$ vary. In this case, $T'$ was used 
+with value $25.6^{\circ}C$, in order to approximate
+$\mathcal{R}_0$ to 0.5, which will be used later in the dissertation. 
+The results can be found starting on
+Appendix 15 
+\footnote{The development of the graphs above can be found at 
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Plotting\_Rates.ipynb.}.
+\\\\
 Tendo obtido a fórmula fechada de $\mathcal{R}_0$, foi possível calcular o seu valor para o 
 modelo atual, apresentado nos apêndices 13 e 14. No caso, $\mathcal{R}_0$ = 88.16804666190774
 e a taxa de picadas no tempo $t=0$ foi de 0.025218306088151666, ou seja, aproximadamente 
@@ -681,11 +692,11 @@ dado que mesmo com um único indivíduo infectado, a doença se estabelece e ati
 um nível de infecção humana de cerca de $40\%$ da população conforme a 
 proporção de picadas causando infecção aumenta. Agora, podemos encontrar qual é o valor de $I_H$
 no equilíbrio dependendo de $k$:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{4.2em} \includegraphics[scale=0.7] {Plot_I_H_vs_k.png}}
-        \caption{$I_H^*$ em função de $k$}
-\end{figure} 
+% \begin{figure}[!ht]
+%         \centering
+%         \hbox{\hspace{4.2em} \includegraphics[scale=0.7] {Plot_I_H_vs_k.png}}
+%         \caption{$I_H^*$ em função de $k$}
+% \end{figure} 
 \\\\
 Iniciando o plot a partir de $k$ que deixa $\mathcal{R}_0 = 1$, é possível ver que
 o equilíbrio endêmico da população humana se aproxima de 64 conforme $k$ se aproxima de 10.
@@ -697,11 +708,11 @@ Analisando o equilíbrio de suscetíveis conforme $k$ aumenta, é possível
 ver o equilíbrio decaindo rapidamente
 de $N$ quando $k=0$ para aproximadamente 5000 indivíduos quando $k=1$. Analisando 
 nos valores de $k$ tais que $\mathcal{R}_0 \geq 1$:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{4.2em} \includegraphics[scale=0.7] {Plot_S_H_vs_k.png}}
-        \caption{$S_H^*$ em função de $k$}
-\end{figure} 
+% \begin{figure}[!ht]
+%         \centering
+%         \hbox{\hspace{4.2em} \includegraphics[scale=0.7] {Plot_S_H_vs_k.png}}
+%         \caption{$S_H^*$ em função de $k$}
+% \end{figure} 
 \newpage
 Nesse caso, a população de suscetíveis tende a aproximadamente 95 conforme 
 $k$ se aproxima de 10. Tendo calculado os equilíbrios de $S_H$ e $I_H$,
