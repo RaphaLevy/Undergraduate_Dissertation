@@ -463,241 +463,154 @@ Appendix 15
 https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
 \\modeling\_files/Plotting\_Rates.ipynb.}.
 \\\\
-Tendo obtido a fórmula fechada de $\mathcal{R}_0$, foi possível calcular o seu valor para o 
-modelo atual, apresentado nos apêndices 13 e 14. No caso, $\mathcal{R}_0$ = 88.16804666190774
-e a taxa de picadas no tempo $t=0$ foi de 0.025218306088151666, ou seja, aproximadamente 
-uma picada por mosquito a cada 40 dias. Notavelmente, esses são valores muito altos para 
-o número de reprodução de uma doença, nesse caso indicando que um indíviduo poderia infectar 
-outros 88. Sendo assim, seria necessário modificar os parâmetros para que o valor de 
-$\mathcal{R}_0$ ficasse próximo de 1, para que seja mais fácil analisar como pequenas 
-modificações nos parâmetros causariam a extinção ou a continuação da doença. 
-Antes disso, porém, 
-foi necessário mais uma vez corrigir as equações do SEI, já que a probabilidade diária de 
-sobrevivência de mosquitos durante o ciclo de esporozoitos ($l$), não é diretamente associada 
-à taxa de infecção dos expostos, e também não é parte da taxa de entrada de novos indíviduos 
-no compartimento $I$. Outra coisa que teve de ser corrigida foi a fórmula da taxa de picadas 
-($a$), que voltou a ser $\dfrac{(T(t) - T')}{D_1}$ como originalmente. As equações corrigidas 
-do SEI ficaram como a seguir:
-\begin{gather*}
-\begin{cases}
-\dfrac{dS_M}{dt} = b - ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M\\
-\\
-\dfrac{dE_M}{dt} = ab_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu E_M - b_3E_M -lE_M\\
-\\
-\dfrac{dI_M}{dt} = b_3E_M -\mu I_M\\
-\end{cases}
-\end{gather*}
-Tendo corrigido as equações, o $\mathcal{R}_0$ do SEI e 
-do modelo acoplado foram 
-$\Big | \dfrac{ab_1b_3}{(b_3+l+\mu)\mu}\Big | $ 
-e $\Big | \sqrt{\dfrac{a^2b_1b_2b_3}{(b_3+l+\mu)\gamma\mu}}\Big | $, 
-respectivamente. 
-Podemos verificar que $\mathcal{R}_0$ é de fato 
-adimensional: $a, \ b_3, \ l, \ \mu$ e $\gamma$ são funções de 
-unidade 1/dia, enquanto $b_1$ e $b_2$ são adimensionais. 
-Sendo assim, $\mathcal{R}_0$ do SIR tem dimensão (1/dia)/(1/dia), 
-$\mathcal{R}_0$ do SEI tem dimensão (1/dia$^2$)/(1/dia$^2$) e o 
-acoplado tem dimensão (1/dia$^3$)/(1/dia$^3$). 
-\\\\
-Novamente calculando o $\mathcal{R}_0$ do modelo atual, seu valor para o modelo acoplado 
-foi de 63.745319442750855, o que já é menor que o encontrado previamente, mas ainda muito alto. 
-Foi necessário analisar que parâmetros poderiam ser modificados de forma que $\mathcal{R}_0$ 
-se aproximasse de 1 tanto para o SIR quanto para o SEI, já que pelas equações é possível 
-aproximar o valor acoplado de 1 enquanto que o valor de um dos outros dois modelos fosse 
-menor que 1, fazendo com que a doença não se estabilizasse ou a população tendesse à extinção, 
-no caso do SEI.
-\\
-Dessa maneira, as modificações ideais para aproximar $\mathcal{R}_0$ de 1 foram as seguintes:
-\begin{flalign*}
-& T' = 27.4 \Rightarrow 25.6 \\
-& D_1 = 36.5 \Rightarrow 55 \\
-& A = 317.925 \Rightarrow 15 \\
-& b_2 = 0.3 \Rightarrow 0.2 \\
-& \gamma = 1/1825 \Rightarrow 1/365
-\end{flalign*}
-Com essas adaptações, 
-\begin{flalign*}
-& \mathcal{R}_0 \ \text{SIR} = 1.167378607783994 \\
-& \mathcal{R}_0 \ \text{SEI} = 1.7805860145371295 \\
-& \mathcal{R}_0 \ \text{SIR/SEI} = 1.4417413161486372
-\end{flalign*}
+Now, having the formula for $\mathcal{R}_0$ for the coupled model,
+the model was executed starting with $E_{M0}=1$ and $I_{M0}=1$ and with
+$E_{M0}=50000$ and $I_{M0}=1000$
+\footnote{These results can be found respectively at
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Plotting\_with\_R0.ipynb and
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Plotting\_with\_R0\_2.ipynb.}. With the parameters used
+in Appendices 13 and 14, $\mathcal{R}_0$ was calculated to be 5.99, which
+means the disease becomes endemic, as it's value is greater than 1. Using $T'=25.6^{\circ}C$
+and $A=12.5$, the results were seen as below:
+\newpage
 \begin{figure}[!ht]
         \centering
-        \hbox{\hspace{3.5em} \includegraphics[scale=0.6] {SIR_R0_near1.png}}
-        \caption{SIR com $T'=25.6 ^\circ C, \ A=15 \ (^\circ C^2 \ \text{dias})^{-1}, \ D_1=55 \ (^\circ C \ \text{dias}), \ b_2=0.2, \ \gamma=1/365$}
+        \hbox{\hspace{2.8em} \includegraphics[scale=0.5] {THESIS-SIR_Initial_EI_1_R0_leq_1.png}}
+        \caption{SIR with $\mathcal{R}_0 <1$, starting with $E_{M0}$ and $I_{M0}=1$}
 \end{figure} 
 \begin{figure}[!ht]
         \centering
-        \hbox{\hspace{3.5em} \includegraphics[scale=0.6] {SEI_R0_near1.png}}
-        \caption{SEI com $T'=25.6 ^\circ C, \ A=15 \ (^\circ C^2 \ \text{dias})^{-1}, \ D_1=55 \ (^\circ C \ \text{dias}), \ b_2=0.2, \ \gamma=1/365$}
+        \hbox{\hspace{2.8em} \includegraphics[scale=0.5] {THESIS-SEI_Initial_EI_1_R0_leq_1.png}}
+        \caption{SEI with $\mathcal{R}_0 <1$, starting with $E_{M0}$ and $I_{M0}=1$}
+\end{figure}
+\newpage
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{2.5em} \includegraphics[scale=0.5] {THESIS-SIR_Initial_EI_geq_1_R0_leq_1.png}}
+        \caption{SIR with $\mathcal{R}_0 <1$, starting with $E_{M0}$ and $I_{M0}>1$}
+\end{figure} 
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{2.5em} \includegraphics[scale=0.5] {THESIS-SEI_Initial_EI_geq_1_R0_leq_1.png}}
+        \caption{SEI with $\mathcal{R}_0 <1$, starting with $E_{M0}$ and $I_{M0}>1$}
+\end{figure}
+With this, as expected, we can see that the disease dies out, specifically 
+the susceptible mosquito population. This would be due to the mortality rate
+being higher than the birth rate.
+\\\\Having the model ready, it was possible to proceed with the analysis of
+the impacts of deforestation. To do that, it was decided to include a multypling
+factor $k$ for the infection rates of both models, substituting $ab_1$ and
+$ab_2$ by $kab_1$ and $kab_2$, respectively. This factor will be used to represent 
+the increasing contact between human and mosquito populations due to the
+the approximation caused by this environental change. With that in mind, 
+we are interested to see how the disease behaves as $k$ increases, therefore
+as the contact between the populations increases.
+\\\\
+To do this, it was also decided that, instead of using the estimated population 
+of the rural region of Manaus of 8558, use the population estimated via interpolation 
+for 2004, and include a birth and mortality rate for the human population, $\mu_H$. 
+With the previously obtained values for the human population 
+between 2004 and 2009, the annual birth rate was 
+estimated to be 206.8 births per year. Therefore, this corresponds 
+to approximately 0.56657 births per day and 0.00007 births per day 
+per person, given that the average rural population in Manaus is 
+approximately 8078.5 people between 2004 and 2008. Therefore, using $\mu_h = 0.00007$ 
+and $k$, the final model is given by:
+\begin{gather*}
+        \begin{cases}
+        \dfrac{dS_H}{dt} = \mu_HN-akb_2\bigg(\dfrac{I_M}{N}\bigg)S_H - \mu_HS_H\\
+        \\
+        \dfrac{dI_H}{dt} = akb_2\bigg(\dfrac{I_M}{N}\bigg)S_H-\gamma I_H - \mu_HI_H\\
+        \\
+        \dfrac{dR_H}{dt} = \gamma I_H - \mu_HR_H\\
+        \\
+        \dfrac{dS_M}{dt} = b - akb_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M\\
+        \\
+        \dfrac{dE_M}{dt} = akb_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu E_M - b_3E_M -lE_M\\
+        \\
+        \dfrac{dI_M}{dt} = b_3E_M -\mu I_M\\
+        \end{cases}
+        \end{gather*}
+Where $\mathcal{R}_0$ for SIR is given by $\Big | \dfrac{akb_2}{\gamma + \mu_H}\Big | $,
+for SEI is given by $\Big | \dfrac{akb_1b_3}{(b_3 + l + \mu)\mu}\Big | $
+and for the coupled model is given by $\Big | \sqrt{\dfrac{a^2k^2b_1b_2b_3}{(b_3+l+\mu)(\gamma+\mu_H)\mu}}\Big | $.
+It can be immediately seen that $k$ will have a linear impact on
+$\mathcal{R}_0$.
+\\\\
+The results using $k=1.5, \ 2, \ 2.5, \ 5$ and $10$ can be found in Appendices 
+27 to 36, while plots for each population for multiple values 
+of $k$ can be found in Appendices 37 to 42. The results with $k=1$ 
+is seen in Figures 5 and 6 \footnote{These results can be found respectively at
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Plotting\_with\_k.ipynb.}.
+\\\\
+It can be seen that, even starting with a single infected 
+human and exposed mosquito,
+the disease will eventually become endemic. For $k$ ranging between 1 and 2,
+$\mathcal{R}_0$ is less than 1, so the disease will die out. However, for $k=2.5$, 
+$\mathcal{R}_0>1$, and it is possible to see, even if only at the end of the analysis, that the disease 
+starts to become endemic, as the human population of infected and recovered 
+have a slight increase by $t=1500$. For the mosquito population, this 
+behavior is less evident.
+\\\\
+For $k=5$ and $k=10$, the disease is already endemic, as it is possible to see
+how it evolves, and that the population will eventually be nearly completely 
+recovered from malaria in the case of the human population. Comparing the results 
+of SIR between $k=5$ and $k=10$, the most notable difference is that, the larger 
+the value of $k$, consequently the larger the value of $\mathcal{R}_0$, 
+the faster the disease becomes endemic. For the SEI model, the difference 
+is that the population stabilizes at different ranges. For $k$ up to 2.5, 
+it appears that the disease doesn't become endemic, atleast in the first 5 years 
+of the analysis. This may also be due to the large value of $M$, meaning the the exposed and 
+infected mosquito populations are very small relatively to the susceptible population.
+\\\\
+For $k=5$ or 10, the sueceptible population rapidly decreases at 
+a certain point in time, and the infected has a slight increase. In 5 years,
+the population seems to become stable, however it would be possible to confirm 
+if that's the case by increasing the maximum time of analysis.
+\\\\
+Now, we can see that we may double the infection rates, and the disease still 
+won't become endemic. In the image below, it is shown how $\mathcal{R}_0$ 
+increases as $k$ increases:
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{2.5em} \includegraphics[scale=0.75] {THESIS-R0_vs_k.png}}
+        \caption{$\mathcal{R}_0$ given in function of $k$}
+\end{figure}
+\newpage
+So, using the parameters from Figures 7 and 8, we can see how the disease 
+will only become endemic when $k>2.075$. Using this results, we can see that
+deforestation does indeed cause a significant impact on the disease,
+as increasing the biting rate in up to 5 to 10 times, starting with a single 
+infected/exposed individual will lead the disease to infect a large portion 
+of the human population, nearly $40\%$, before decreasing into a stable 
+recovered population.
+\\\\
+In fact, we may analyze how the equilibriums of $S_H$ and $I_H$ are 
+affected in function of $k$:
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{5.0em} \includegraphics[scale=0.6] {THESIS-Equilibrium_IH_vs_k.png}}
+        \caption{$I_H^*$ given in function of $k$}
+\end{figure}
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{5.0em} \includegraphics[scale=0.6] {THESIS-Equilibrium_SH_vs_k.png}}
+        \caption{$S_H^*$ given in function of $k$}
 \end{figure}
 \\\\
-Discutindo essa aproximação de $\mathcal{R}_0$ a 1 com o orientador do 
-Trabalho, foi decidido 
-que ao invés de aumentar o valor $D_1$, um parâmetro empírico usado para 
-estabilizar a taxa de picadas, seria ideal modificar $b_1$ e $b_2$, que são as
-proporções de picadas gerando infecção em mosquitos e humanos suscetíveis, 
-respectivamente, tendo em vista que, conforme temos mais ocorrências de áreas 
-desmatadas, haverá um maior contato entre humanos e mosquitos, aumentando a 
-proporção de picadas gerando infecção. 
-\\\\
-Junto com essa correção, também 
-foram modelados os gráficos de evolução das taxas utilizadas, em função 
-da temperatura e precipitação, ao invés do tempo, para que fosse 
-possível analisar o comportamento dessas taxas conforme a temperatura e 
-precipitação variam. Os gráficos estão indicados no apêndice, partindo do 15. 
-Gerando esses gráficos, também foi percebido que seria ideal aumentar $R_L$ 
-do valor atual de 312 mm para 450 mm, para evitar que a probabilidade de 
-sobrevivência de mosquitos durante as diferentes fases se 
-tornasse muito próximo de 0, o que estava afetando a taxa de 
-nascimentos $b(R,T)$, e diminuir $\gamma$ de 1/365 dias para 1/120, valor original
-do artigo de referência \cite{Parham2010}, de forma que a curva epidêmica fosse mais
-próxima do analisado na realidade, visto na Figura 5 que a curva de infectados começa
-a crescer logo no início da análise, e a infecção só deixa de ocorrer após mais de
-5 anos.
-\\\\
-Após o desenvolvimento dos gráficos das taxas, foi iniciada a modelagem usando os dados 
-``reais" da população obtidos através da interpolação dos dados de população de Manaus indicada na Tabela 4.
-Com os valores previmente obtidos, a taxa anual de nascimentos foi estimada como sendo de 206.8 
-nascimentos por ano. Sendo assim, são 0.56657 nascimentos por dia, aproximadamente, e 0.00007 nascimentos
-diários por pessoa, já que a população rural média em Manaus é de aproximadamente 8078.5 pessoas entre 2004 e 2008.
-\\\\
-Assumindo que a taxa de natalidade e mortalidade de humanos é a mesma, foi então incluído na 
-modelagem o parâmetro $\mu_H$, com valor 0.00007, representando a taxa diária de 
-nascimentos e mortes. O modelo atualizado ficou como a seguir:
-\begin{gather*}
-\begin{cases}
-\dfrac{dS_H}{dt} = \mu_HN-ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H - \mu_HS_H\\
-\\
-\dfrac{dI_H}{dt} = ab_2\bigg(\dfrac{I_M}{N}\bigg)S_H-\gamma I_H - \mu_HI_H\\
-\\
-\dfrac{dR_H}{dt} = \gamma I_H - \mu_HR_H\\
-\\
-\end{cases}
-\end{gather*}
-A elaboração dos gráficos, a partir do Apêndice 27, foi feita em \footnote{https://github.com/RaphaLevy/TCC/blob/main/Modelagem\_com\_Dinamica\_Pop/ \\
-Modelagem\_com\_Entrada\_Populacional.ipynb}.
-\\\\
-Tendo corrigido as equações, o $\mathcal{R}_0$ do SIR e do modelo acoplado 
-foram $\Big | \dfrac{ab_2}{\gamma + \mu_H}\Big | $ e 
-$\Big | \sqrt{\dfrac{a^2b_1b_2b_3}{(b_3+l+\mu)(\gamma+\mu_H)\mu}}\Big | $, respectivamente. Podemos verificar que $\mathcal{R}_0$ é de fato adimensional: $a, \ b_3, \ l, \ \mu$ e $\gamma$ são funções de unidade 1/dia, enquanto $b_1$ e $b_2$ são adimensionais. Sendo assim, $\mathcal{R}_0$ do SIR tem dimensão (1/dia)/(1/dia), $\mathcal{R}_0$ do SEI tem dimensão (1/dia$^2$)/(1/dia$^2$) e o acoplado tem dimensão (1/dia$^3$)/(1/dia$^3$). 
-\\\
-Como esperado, com $\mathcal{R}_0$ menor que 1, e apenas 1 mosquito exposto e 
-1 humano infectado, a doença não consegue se estabelecer, como pode ser visto abaixo:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{2.5em} \includegraphics[scale=0.7] {SIR_Entrada_Pop_1_1_Infect.png}}
-        \caption{SIR com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, E_{M0}=1, I_{H0}=1$} 
-\end{figure} 
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{2.5em} \includegraphics[scale=0.7] {SEI_Entrada_Pop_1_1_Infect.png}}
-        \caption{SEI com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, E_{M0}=1, I_{H0}=1$} 
-\end{figure} 
-\\Dos apêndices 27 a 30, aumentando o número de infectados e expostos, inicialmente com um 
-``pequeno" aumento, com 1/30 da população de mosquitos exposta à doença, e 6.5\% 
-de humanos infectados, a população de infectados humanos começa a aumentar, 
-mas não consegue se estabelecer. Prolongando o tempo de análise, será possível 
-ver que a população se extinguirá nos anos seguintes. Idealmente, seria 
-possível verificar a população de infectados tendendo a 0 ainda no tempo da 
-análise. Por outro lado, iniciando a população humana com cerca de 13\% de infectados, 
-é possível ver que essa população tem um aumento ao longo do primeiro ano, 
-chegando a quase 41\% da população, mas posteriormente decaindo.
-\\\\
-No caso dos mosquitos, a população inicial de expostos quase que 
-imediatamente se torna de infectados, se estabilizando em cerca de 5000 
-indivíduos, mas não é possível perceber a população de infectados se 
-extinguindo, mesmo prolongando o tempo de análise. Esse comportamento 
-ainda pode ser notado quando 1/3 da população começa exposto, rapidamente 
-se tornando infectada, mas se estabelecendo em cerca de 10000 indivíduos. 
-\\\\
-Agora, voltando a um único exposto e infectado inicialmente, e incluindo um fator
-multiplicativo $k$ nas proporções $b_1$ e $b_2$, representando o aumento de contato
-entre humanos e mosquitos devido ao desmatamento, foi possível analisar o efeito desse impacto
-na evolução da doença. A formulação final do modelo ficou como a seguir:
-\begin{gather*}
-\begin{cases}
-\dfrac{dS_H}{dt} = \mu_HN-akb_2\bigg(\dfrac{I_M}{N}\bigg)S_H - \mu_HS_H\\
-\\
-\dfrac{dI_H}{dt} = akb_2\bigg(\dfrac{I_M}{N}\bigg)S_H-\gamma I_H - \mu_HI_H\\
-\\
-\dfrac{dR_H}{dt} = \gamma I_H - \mu_HR_H\\
-\\
-\dfrac{dS_M}{dt} = b - akb_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu S_M\\
-\\
-\dfrac{dE_M}{dt} = akb_1\bigg(\dfrac{I_H}{N}\bigg)S_M - \mu E_M - b_3E_M -lE_M\\
-\\
-\dfrac{dI_M}{dt} = b_3E_M -\mu I_M\\
-\end{cases}
-\end{gather*}
-Aumentando as proporções em 20 e 50\% ($k=1.2$ e $k=1.5$), não foi possível perceber
-nenhuma diferença visível na evolução da doença, isso porque $\mathcal{R}_0 < 1$  
-para $k < 2.0746963059512207$, como pode ser visto abaixo:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{3em} \includegraphics[scale=0.8] {Plot_R0_vs_k.png}}
-        \caption{$\mathcal{R}_0$ em função de $k$}
-\end{figure} 
-\\\\
-%mas com um aumento de 100\%, o resultado ficou como a seguir:
-Sendo assim, mesmo um aumento de 100\% nas proporções de picadas causando infecção
-não seria suficiente para que a doença se torne endêmica. Abaixo estão testes com $k=2.5, \ 5$ e $10$:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{2.0em} \includegraphics[scale=0.7] {Correcao_SIR_Desmat_k=2_5.png}}
-        \caption{SIR com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, \ k=2.5$}
-\end{figure} 
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{1.5em} \includegraphics[scale=0.7] {Correcao_SEI_Desmat_k=2_5.png}}
-        \caption{SEI com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, \ k=2.5$}
-\end{figure} 
-\newpage
-Aumentando em $150\%$ a proporção de picadas causando infecção, já é possível notar que o 
-número de infectados começa a aumentar, ainda que quase no final do período 
-de análise. Isso porque com o aumento em $k$, $\mathcal{R}_0$ passou de 0.48, 
-com $k=1$, para 1.2, permitindo que a doença se estabeleça a longo prazo. Como $k$
-está relacionado tanto com $b_1$ quanto $b_2$, esse fator aparecerá como $k^2$ no
-numerador de $\mathcal{R}_0$, portanto afetando seu valor de forma linear.
-Aumentando $k$ para 5, será bem mais perceptível a evolução da doença:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{3.7em} \includegraphics[scale=0.6] {Correcao_SIR_Desmat_k=5.png}}
-        \caption{SIR com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, \ k=5$}
-\end{figure} 
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{3.2em} \includegraphics[scale=0.6] {Correcao_SEI_Desmat_k=5.png}}
-        \caption{SEI com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, \ k=5$}
-\end{figure} 
-\newpage
-Nesse caso, $\mathcal{R}_0 = 2.41$, e apesar de não ser possível verificar no tempo 
-máximo dos 5 anos, nesse caso o número de infectados consegue se estabilizar, 
-oscilando em aproximadamente 50 humanos e 9000 mosquitos infectados. Aumentando $k$ para 10, 
-$\mathcal{R}_0 = 4.82$, e a infecção atinge seu máximo de forma ainda mais rápida:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{4.2em} \includegraphics[scale=0.6] {Correcao_SIR_Desmat_k=10.png}}
-        \caption{SIR com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, \ k=10$}
-\end{figure} 
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{4.2em} \includegraphics[scale=0.6] {Correcao_SEI_Desmat_k=10.png}}
-        \caption{SEI com $T'=25.6 ^\circ C, \ A=12.5 \ (^\circ C^2 \ \text{dias})^{-1}, \ B=15 \ (^\circ C \ \text{dias})^{-1}, \ C=-48.78 \ (\text{dias})^{-1}, \ R_L=450 \text{mm}, \ k=10$}
-\end{figure} 
-\newpage
-Com esses resultados, é possível perceber que o desmatamento acarretando em aproximação
-entre hospedeiro e vetor causa um alto impacto na dinâmica da malária,
-dado que mesmo com um único indivíduo infectado, a doença se estabelece e atinge 
-um nível de infecção humana de cerca de $40\%$ da população conforme a 
-proporção de picadas causando infecção aumenta. Agora, podemos encontrar qual é o valor de $I_H$
-no equilíbrio dependendo de $k$:
-% \begin{figure}[!ht]
-%         \centering
-%         \hbox{\hspace{4.2em} \includegraphics[scale=0.7] {Plot_I_H_vs_k.png}}
-%         \caption{$I_H^*$ em função de $k$}
-% \end{figure} 
-\\\\
+By starting the plots for $k$ which makes $\mathcal{R}_0 = 1$ and for $t=1825$, 
+as we want the final equilibrium, 
+it is possible to see that the endemic equilibrium of infected 
+humans approaches to a little over 60 as $k$ increases to 10. 
+In fact, when $k=10$, $I_H^* \approx 61.64$. Analyzing the 
+susceptible population, it decreases to values under 500, 
+$S_H^* \approx 317$ when $k=10$ \footnote{These results can be found respectively at
+https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
+\\modeling\_files/Plotting\_Equilibriums.ipynb.}.
+\\\\ 
 Iniciando o plot a partir de $k$ que deixa $\mathcal{R}_0 = 1$, é possível ver que
 o equilíbrio endêmico da população humana se aproxima de 64 conforme $k$ se aproxima de 10.
 Mais especificamente, quando $k=10$, $I_H^* \approx 63.49$ \footnote{A elaboração 
