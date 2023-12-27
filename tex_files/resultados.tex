@@ -63,7 +63,8 @@ precipitation oscillating in very short periods of
 time, attributed to a high value of $\omega$ for both functions.
 \\\\
 Starting with only a single infected human and exposed mosquito, the 
-oscilatting population isn't noticeable in the SIR plot, however the mosquito population 
+oscilatting population isn't noticeable in the SIR plot, however the 
+mosquito population 
 still becomes negative.
 \\\\
 Now, the first necessary modification is to correct the temperature 
@@ -163,7 +164,7 @@ Notably, this result is still incorrect, as the mosquito population
 still becomes negative over time. 
 However, the daily oscillations
 was indeed eliminated, due to the modifications made to $\omega_1$ and $\omega_2$.
-Another parameter that should also be adapated in consideration for our new climatic
+Another parameter that should also be adapted in consideration for our new climatic
 values was $R_L$, the rainfall limit beyond which breeding sites get flushed out and no 
 immature stages survive. In the original paper, $R_L$ was defined as 50 mm, which is
 too low for the high precipitation in the Amazon, which has a maximum of almost
@@ -178,9 +179,9 @@ becomes extinct. That is due to the value of $\mu$, the mortality rate of mosqui
 given by $-\log(e^{(-1 / (AT^2 + BT + C))})$. For small values of 
 $A$, $B$ and $C$, mostly $A$, $\mu$ becomes ``relatively'' large, and the mosquito
 population goes extinct. To fix this, I altered these 3 parameters from the initial values 
-of the arcticle, which had $\mu \approx 0.0027$, to $A=356.3, \ B=15$
+of the article, which had $\mu \approx 0.0027$, to $A=356.3, \ B=15$
 and $C=-48.78$, which gave a $\mu$ of approximately $4.02133 \times 10^{-6}$, 
-and so the mosquto population is nearly constant throughout the analysis.
+and so the mosquito population is nearly constant throughout the analysis.
 The results, with $A, \ B$
 and $C$ as above, can be found in Appendices 5 and 6 
 \footnote{The development of the graphs above can be found at 
@@ -504,7 +505,7 @@ the impacts of deforestation. To do that, it was decided to include a multypling
 factor $k$ for the infection rates of both models, substituting $ab_1$ and
 $ab_2$ by $kab_1$ and $kab_2$, respectively. This factor will be used to represent 
 the increasing contact between human and mosquito populations due to the
-the approximation caused by this environental change. With that in mind, 
+the approximation caused by this environmental change. With that in mind, 
 we are interested to see how the disease behaves as $k$ increases, therefore
 as the contact between the populations increases.
 \\\\
@@ -546,7 +547,7 @@ is seen in Figures 5 and 6 \footnote{These results can be found respectively at
 https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
 \\modeling\_files/Plotting\_with\_k.ipynb.}.
 \\\\
-It can be seen that, even starting with a single infected 
+We see that, even starting with a single infected 
 human and exposed mosquito,
 the disease will eventually become endemic. For $k$ ranging between 1 and 2,
 $\mathcal{R}_0$ is less than 1, so the disease will die out. However, for $k=2.5$, 
@@ -562,7 +563,7 @@ of SIR between $k=5$ and $k=10$, the most notable difference is that, the larger
 the value of $k$, consequently the larger the value of $\mathcal{R}_0$, 
 the faster the disease becomes endemic. For the SEI model, the difference 
 is that the population stabilizes at different ranges. For $k$ up to 2.5, 
-it appears that the disease doesn't become endemic, atleast in the first 5 years 
+it appears that the disease doesn't become endemic, at least in the first 5 years 
 of the analysis. This may also be due to the large value of $M$, meaning the the exposed and 
 infected mosquito populations are very small relatively to the susceptible population.
 \\\\
@@ -611,48 +612,50 @@ $S_H^* \approx 317$ when $k=10$ \footnote{These results can be found respectivel
 https://github.com/RaphaLevy/Undergraduate\_Dissertation/blob/main/
 \\modeling\_files/Plotting\_Equilibriums.ipynb.}.
 \\\\ 
-Iniciando o plot a partir de $k$ que deixa $\mathcal{R}_0 = 1$, é possível ver que
-o equilíbrio endêmico da população humana se aproxima de 64 conforme $k$ se aproxima de 10.
-Mais especificamente, quando $k=10$, $I_H^* \approx 63.49$ \footnote{A elaboração 
-dos gráficos em função de $k$ podem ser encontrados em https://github.com/RaphaLevy/TCC/blob/main/Modelagem\_com\_Dinamica\_Pop/Plota\_Equilibrio\_e\_R0.ipynb. 
-O cálculo dos equilíbrios pode ser encontrado em
-https://github.com/RaphaLevy/TCC/blob/main/Modelagem\_com\_Dinamica\_Pop/R0\_com\_Dinamicas\_Demograficas.ipynb}.
-Analisando o equilíbrio de suscetíveis conforme $k$ aumenta, é possível 
-ver o equilíbrio decaindo rapidamente
-de $N$ quando $k=0$ para aproximadamente 5000 indivíduos quando $k=1$. Analisando 
-nos valores de $k$ tais que $\mathcal{R}_0 \geq 1$:
+We can also verify how the equilibriums between $S_H$ and $I_H$ are affected 
+as the initial conditions vary:
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{3.2em} \includegraphics[scale=0.55] {THESIS-SH_vs_IH_k=2_075.png}}
+        \caption{Global equilibrium $S_H^* \times I_H^*$ for $k=2.0746963059512207$}
+\end{figure}
+\begin{figure}[!ht]
+        \centering
+        \hbox{\hspace{3.5em} \includegraphics[scale=0.55] {THESIS-SH_vs_IH_k=10.png}}
+        \caption{Global equilibrium $S_H^* \times I_H^*$ for $k=10$}
+\end{figure}
 % \begin{figure}[!ht]
 %         \centering
 %         \hbox{\hspace{4.2em} \includegraphics[scale=0.7] {Plot_S_H_vs_k.png}}
 %         \caption{$S_H^*$ em função de $k$}
 % \end{figure} 
 \newpage
-Nesse caso, a população de suscetíveis tende a aproximadamente 95 conforme 
-$k$ se aproxima de 10. Tendo calculado os equilíbrios de $S_H$ e $I_H$,
-foi possível fazer uma análise de estabilidade global. Como estamos interessados
-em analisar o equilíbrio endêmico, utilizei $k=10$:
-\begin{figure}[!ht]
-        \centering
-        \hbox{\hspace{2.2em} \includegraphics[scale=0.7] {Equilibrio_SH_IH_k_10.png}}
-        \caption{Equilíbrio global $S_H^* \times I_H^*$ para $k=10$}
-\end{figure}
+The plottings of these populations, increasing $I_{H0}$, given in function of $t$, 
+can be found in Appendices 43 to 46.
 \\\\
-Nesse caso, foram feitas 6 análises, a primeira utilizando os
-valores iniciais de $S_H$ e $I_H$ como sendo 7716 e 1, e as demais aumentando $I_H$ 
-em 1000 e diminuindo $S_H$ em 1000 indivíduos. Nesse caso, é possível
-ver as populações de suscetíveis e infectados com um equilíbrio final de
-aproximadamente 8 e 70 pessoas, respectivamente. Com isso,
-poderíamos comparar o resultado obtido com o cálculo do equilíbrio endêmico de Adda e Bichara
-\cite{adda2011global}, onde
+With this, it is possible to see that, when $\mathcal{R}_0=1$, the equilibrium 
+is very close to the initial values when $I_{H0}$ is small, however, as 
+$I_{H0}$ increases, the populations tend to become stable at values closer 
+to $(0,0)$. It can also be seen that the curves tend to oscilate more and more 
+as they approach this stability.
+\\\\
+By increasing the value of $\mathcal{R}_0$, it can be seen that even with a 
+single initially infected human, this stability also approaches $(0,0)$. 
+Increasing $I_{H0}$, this behaviour is the same, getting even closer to $(0,0)$, 
+while oscilating less than for a smaller value of $k$.
+\\\\
+With this, we could compare the obtained result with the calculation of 
+the endemic equilibrium by Adda and Bichara \cite{adda2011global}, where
 \begin{gather*}
         S_H^* = \dfrac{1}{\mathcal{R}_0} \\
         I_H^* = \dfrac{\mu_H}{\mu_H+\gamma}(1-\dfrac{1}{\mathcal{R}_0})
 \end{gather*}       
-Através desse cálculo, a população de suscetíveis e infectados no equilíbrio 
-foi de aproximadamente 1601 e 51, respectivamente. Notavelmente, esses valores 
-estão destoantes dos 
-obtidos através do cálculo numérico. Contudo, é necessário considerar a principal diferença entre as equações
-propostas para $S$ e $I$ nesse Trabalho e no artigo de Adda e Bichara, que é o uso de
-$I_M$ na taxa de infecção $\beta$, dada a dinâmica do modelo 
-acoplado de SIR e SEI nesse caso, que não está sendo considerada no trabalho
-de Adda e Bichara.
+Through this calculation, the population of susceptibles 
+and infected at equilibrium was approximately 1601 and 51, 
+respectively. Remarkably, these values deviate from those 
+obtained through numerical calculation. However, it is 
+necessary to consider the main difference between the proposed 
+equations for $S$ and $I$ in this work and in the paper by Adda 
+and Bichara, which is the use of $I_M$ in the infection rate $\beta$, 
+given the dynamics of the coupled SEIR model in this case, which 
+is not considered in the work of Adda and Bichara.
